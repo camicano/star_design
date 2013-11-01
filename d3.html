@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+  <head>
+    <title>D3 Demo2</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style type="text/css">
+    
+    * {
+      padding: 0;
+      margin: 0;
+      border: 0;
+      position: relative;
+    }
+    </style>
+  </head>
+  <body>
+    <div id='container1'></div>
+    <div id='container2'></div>
+
+
+    <script type="text/javascript">
+      var dataset = []
+
+      var i = 0;
+      while(i < 80){
+        dataset.push(i);
+        i++;
+      }
+
+      var svgContainer = d3.select("#container1").append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+      var svgContainer2 = d3.select("#container1").append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+      var svgContainer3 = d3.select("#container2").append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+      var svgContainer4 = d3.select("#container2").append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+      svgContainer.selectAll("line")
+        .data(dataset)
+        .enter()
+        .append("line")
+        .attr("stroke-width", 1)
+        .attr("stroke", "black")
+        .attr("x1", 500)
+        .attr("y1", function(d){
+          return (d * 5) + 100
+        })
+        .attr("x2", function(d){
+          return 500 - (d * 5)
+        })
+        .attr("y2", 500);
+
+      svgContainer2.selectAll("line")
+        .data(dataset)
+        .enter()
+        .append("line")
+        .attr("stroke-width", 1)
+        .attr("stroke", "black")
+        .attr("x1", 1)
+        .attr("y1", function(d){
+          return 500 - (d * 5)
+        })
+        .attr("x2", function(d){
+          return 400 - (d * 5)
+        })
+        .attr("y2", 500);        
+
+      svgContainer3.selectAll("line")
+        .data(dataset)
+        .enter()
+        .append("line")
+        .attr("stroke-width", 1)
+        .attr("stroke", "black")
+        .attr("x1", 500)
+        .attr("y1", function(d){
+          return d * 5
+        })
+        .attr("x2", function(d){
+          return (d * 5) + 100
+        })
+        .attr("y2", 1);
+
+      svgContainer4.selectAll("line")
+        .data(dataset)
+        .enter()
+        .append("line")
+        .attr("stroke-width", 1)
+        .attr("stroke", "black")
+        .attr("x1", 1)
+        .attr("y1", function(d){
+          return (d * 5)
+        })
+        .attr("x2", function(d){
+          return 400 - (d * 5)
+        })
+        .attr("y2", 1);
+
+    </script>
+  </body>
+</html>
